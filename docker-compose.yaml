@@ -5,7 +5,7 @@ services:
     image: javascript-img
     build: 
       context:  
-      dockerfile:  ./docker-images/javascript/dev.Dockerfile
+      dockerfile:  ./backend/dev.Dockerfile
     ports: 
       3000:3000
     env:
