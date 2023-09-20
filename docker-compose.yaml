@@ -1,0 +1,20 @@
+version 3:
+
+services:
+  frontend:
+    image: javascript-img
+    build: 
+      context:  
+      dockerfile:  ./docker-images/javascript/dev.Dockerfile
+    ports: 
+      3000:3000
+    env:
+      GOOGLE_API_TOKEN=token-value
+  backend:
+    image: python-img
+    build: 
+      dockerfile:  ./docker-images/python/dev.Dockerfile
+    ports:
+      3001:3001
+    
+    
