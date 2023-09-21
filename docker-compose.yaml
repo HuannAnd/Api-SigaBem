@@ -1,20 +1,22 @@
-version 3:
+version: "3"
 
 services:
-  frontend:
-    image: javascript-img
-    build: 
-      context:  
-      dockerfile:  ./backend/dev.Dockerfile
-    ports: 
-      3000:3000
-    env:
-      GOOGLE_API_TOKEN=token-value
+  # frontend:
+  #   image: javascript-img
+  #   build: 
+  #     context:  
+  #     dockerfile:  ./backend/dev.Dockerfile
+  #   ports: 
+  #     3000:3000
+  #   env:
+  #     GOOGLE_API_TOKEN=token-value
   backend:
+    container_name: python-service
     image: python-img
     build: 
-      dockerfile:  ./docker-images/python/dev.Dockerfile
+      dockerfile:  ./backend/dev.Dockerfile
     ports:
-      3001:3001
+      - 5000:5000
+    restart: always
     
     
