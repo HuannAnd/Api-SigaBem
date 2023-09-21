@@ -14,7 +14,8 @@ services:
     container_name: python-service
     image: python-img
     build: 
-      dockerfile:  ./backend/dev.Dockerfile
+      context: ./backend
+      dockerfile:  ./dev.Dockerfile
     ports:
       - 5000:5000
     restart: always
