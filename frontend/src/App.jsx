@@ -1,9 +1,11 @@
-import './App.css'
+import useStageContext from "./hooks/useStageContext";
+
+import Aside from "./components/Aside";
 
 function App() {
-  return (
-    <h1 className='font-bold text-lg'>Hello world</h1>
-  )
+  const stage = useStageContext();
+
+  return <Aside />;
 }
 
-export default App
+export default App;
