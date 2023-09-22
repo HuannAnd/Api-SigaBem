@@ -1,9 +1,49 @@
-export default function Aside() {
+import { ClockIcon } from "@radix-ui/react-icons";
+
+import stages from "../services/stages";
+
+import sigaBemLogo from "../assets/sigabem.png";
+import getArrivalTimeInMin from "../utils/getArrivalTimeInMin";
+
+function Stage({ stage, to, time, onClick }) {
+  const arrivalTime = getArrivalTimeInMin(time);
+
   return (
-    <aside className="w-[20vw] h-screen fixed left-0 top-0 bg-red-400">
-      <button>Linha 1</button>
-      <button>Linha 2</button>
-      <button>Linha 3</button>
+    <button
+      onClick={onClick}
+      className="pb-8 border-b-2 border-b-gray-200 opacity-50 hover:opacity-100"
+    >
+      <div className="flex w-full justify-between mb-4">
+        <div className="flex gap-2">
+          <ClockIcon />
+          <span className="text-xs text-black/40 ">{stage}</span>
+        </div>
+        <p>{to}</p>
+      </div>
+      <div className="flex w-full justify-between">
+        <p className="text-red-400 text-xs">Horário de chegada em: </p>
+        <time className="text-[#111]/30 text-xs">{arrivalTime} min</time>
+      </div>
+    </button>
+  );
+}
+
+export default function Aside({ setStage }) {
+  return (
+    <aside className="w-[20vw] h-screen fixed px-4 left-0 top-0 shadow-lg text-[#111] text-sm gap-2">
+      <div className="grid place-content-center mb-8 h-[20%">
+        <img
+          className="scale-50 mix-blend-multiply"
+          src={sigaBemLogo}
+          alt="Sigabem logo"
+        />
+      </div>
+      <h5 className="mb-8">Paradas</h5>
+      <div className="flex flex-col gap-4">
+        {stages.map((x, i) => (
+          <Stage key={`stage_${i}`} onClick={() => setStage(x.stage)} {...x} />
+        ))}
+      </div>
     </aside>
-  )
+  );
 }
