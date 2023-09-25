@@ -30,16 +30,16 @@ function Stage({ stage, to, time, onClick }) {
 
 export default function Aside({ setStage }) {
   return (
-    <aside className="w-[20vw] h-screen fixed px-4 left-0 top-0 shadow-lg text-[#111] text-sm gap-2">
-      <div className="grid place-content-center mb-8 h-[20%">
+    <aside className="@mobile:py-12 @mobile:order-2 @mobile:w-full @mobile:h-auto h-screen @laptop:fixed px-4 left-0 top-0 shadow-lg text-[#111] text-sm gap-2">
+      <div className="grid @mobile:none place-content-center mb-8 @mobile:h-0 @laptop:h-[20%]">
         <img
-          className="scale-50 mix-blend-multiply"
+          className="scale-50 @mobile:invisible mix-blend-multiply"
           src={sigaBemLogo}
           alt="Sigabem logo"
         />
       </div>
       <h5 className="mb-8">Paradas</h5>
-      <div className="flex flex-col gap-4">
+      <div className="flex @mobile:w-full @mobile:h-auto flex-col gap-4">
         {stages.map((x, i) => (
           <Stage key={`stage_${i}`} onClick={() => setStage(x.stage)} {...x} />
         ))}

@@ -21,8 +21,10 @@ export default function StageProvider({ children }) {
   return (
     <StageContext.Provider value={stage}>
       <StageTimeContext.Provider value={stages[stage - 1].time}>
-        <Aside setStage={setStage} />
-        {children}
+        <div className="flex flex-col">
+          <Aside setStage={setStage} />
+          {children}
+        </div>
       </StageTimeContext.Provider>
     </StageContext.Provider>
   );
