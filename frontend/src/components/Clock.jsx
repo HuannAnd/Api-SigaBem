@@ -13,6 +13,14 @@ export default function Clock() {
   const time = useStageTimeContext();
   const [arrivalTime, setArrivalTime] = useState(getArrivalTimeInMin(time));
 
+  const location = useMemo(() => {
+    if(stageValue === 0) return null
+    const station = stages.find((x) => x.stage === stageValue);
+    const location = station.to;
+
+    return location;
+  }, [stageValue]);
+
   useEffect(() => {
     setArrivalTime(getArrivalTimeInMin(time));
   }, [stageValue]);
@@ -27,11 +35,16 @@ export default function Clock() {
     };
   }, [time]);
 
+  if (stageValue === 0) return null
+
   return (
     <section className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <ClockIcon color="red" width={300} height={300} />O ônibus chegará na sua
       parada em:
-      <p className="text-3xl text-red-300">{arrivalTime} minutes</p>
+      <span className="text-red-700">{location}</span>
+      <p className="text-3xl text-red-300">
+        {Math.max(arrivalTime, 0)} minutes
+      </p>
     </section>
   );
 }

@@ -4,14 +4,17 @@ import stages from "../services/stages";
 
 import sigaBemLogo from "../assets/sigabem.png";
 import getArrivalTimeInMin from "../utils/getArrivalTimeInMin";
+import useStageContext from "../hooks/useStageContext";
 
 function Stage({ stage, to, time, onClick }) {
+  const stageValue = useStageContext();
   const arrivalTime = getArrivalTimeInMin(time);
 
   return (
     <button
       onClick={onClick}
       className="pb-8 border-b-2 border-b-gray-200 opacity-50 hover:opacity-100"
+      style={{ opacity: stage === stageValue ? 1 : 0.2 }}
     >
       <div className="flex w-full justify-between mb-4">
         <div className="flex gap-2">
