@@ -38,8 +38,8 @@ export default function Clock() {
   if (stageValue === 0) return null
 
   return (
-    <section className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <ClockIcon color="red" width={300} height={300} />O ônibus chegará na sua
+    <section className="@mobile:static @mobile:order-1 @mobile:mx-auto @mobile:translate-x-0 @mobile:translate-y-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <ClockIcon color="red" className="@mobile:mx-auto" width={300} height={300} />O ônibus chegará na sua
       parada em:
       <span className="text-red-700">{location}</span>
       <p className="text-3xl text-red-300">
