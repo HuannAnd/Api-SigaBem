@@ -14,7 +14,7 @@ export default function Clock() {
   const [arrivalTime, setArrivalTime] = useState(getArrivalTimeInMin(time));
 
   const location = useMemo(() => {
-    if(stageValue === 0) return null
+    if (stageValue === 0) return null;
     const station = stages.find((x) => x.stage === stageValue);
     const location = station.to;
 
@@ -35,16 +35,18 @@ export default function Clock() {
     };
   }, [time]);
 
-  if (stageValue === 0) return null
+  if (stageValue === 0) return null;
 
   return (
-    <section className="@mobile:static @mobile:order-1 @mobile:mx-auto @mobile:translate-x-0 @mobile:translate-y-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <ClockIcon color="red" className="@mobile:mx-auto" width={300} height={300} />O ônibus chegará na sua
-      parada em:
-      <span className="text-red-700">{location}</span>
-      <p className="text-3xl text-red-300">
-        {Math.max(arrivalTime, 0)} minutes
+    <article className="w-full mb-8">
+      <p>
+        O ônibus selecionado:{" "}
+        <span className="text-@primary font-medium">{location}</span>
       </p>
-    </section>
+      <ClockIcon color="#58bf97" className="mx-auto py-4" width={200} height={200} />
+      <p>
+        Falta <span className="text-@primary font-medium">{Math.max(arrivalTime, 0)} minutos</span> para a chegada!
+      </p>
+    </article>
   );
 }

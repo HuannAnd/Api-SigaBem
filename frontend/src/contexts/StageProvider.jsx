@@ -1,6 +1,6 @@
 import { createContext, useLayoutEffect, useState } from "react";
 
-import Aside from "../components/Aside";
+import Aside from "../layouts/Aside";
 
 import stages from "../services/stages";
 
